@@ -1,6 +1,10 @@
-import { Container, Paper, Typography } from '@mui/material'
+import { Container, Paper, SxProps, Theme, Typography } from '@mui/material'
 
-function Footer() {
+interface FooterProps {
+  sx?: SxProps<Theme>
+}
+
+export function Footer({ sx }: FooterProps) {
   return (
     <Paper
       sx={{
@@ -8,6 +12,7 @@ function Footer() {
         mt: 'auto',
         borderRadius: 0,
         p: 2,
+        ...sx,
       }}
     >
       <Container maxWidth='lg'>
@@ -23,5 +28,3 @@ function Footer() {
     </Paper>
   )
 }
-
-export default Footer

@@ -1,18 +1,10 @@
-import { Typography } from '@mui/material'
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { GenerateUrlCard } from '../components/links/GenerateUrlCard'
 
-function Homepage() {
+export function Homepage() {
   useEffect(() => {
     document.title = `offnd.at - share the offensiveness`
   }, [])
 
-  return (
-    <>
-      <Typography>Homepage</Typography>
-      <Link to='/s/wyjebiście-dewońscy-horyszowianie'>Go stats</Link>
-    </>
-  )
+  return <GenerateUrlCard />
 }
-
-export default Homepage

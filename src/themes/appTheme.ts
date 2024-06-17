@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material'
 
-const appTheme = createTheme({
+export const appTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
@@ -11,5 +11,3 @@ const appTheme = createTheme({
     fontFamily: 'Lato',
   },
 })
-
-export default appTheme

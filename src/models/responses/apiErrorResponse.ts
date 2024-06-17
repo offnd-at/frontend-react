@@ -1,5 +1,5 @@
-import { Error } from '../error'
+import { ApiError } from '../apiError'
 
 export type ApiErrorResponse = {
-  errors: Error[]
+  errors: ApiError[]
 }

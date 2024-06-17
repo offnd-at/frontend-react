@@ -1,17 +1,32 @@
-import { Box, Typography } from '@mui/material'
+import { Grid, SxProps, Theme } from '@mui/material'
+import { HeaderText } from './HeaderText'
+import { SettingsSelectors } from '../settings/SettingsSelectors'
 
-function Header() {
-  return (
-    <Box>
-      <Typography
-        color='primary'
-        variant='h2'
-        fontWeight='bold'
-      >
-        offnd.at
-      </Typography>
-    </Box>
-  )
+interface HeaderProps {
+  isOnHomepage: boolean
+  sx?: SxProps<Theme>
 }
 
-export default Header
+export function Header({ isOnHomepage, sx }: HeaderProps) {
+  return (
+    <Grid
+      container
+      sx={sx}
+    >
+      <Grid
+        item
+        xs={isOnHomepage ? 8 : 12}
+      >
+        <HeaderText />
+      </Grid>
+      {isOnHomepage && (
+        <Grid
+          item
+          xs={4}
+        >
+          <SettingsSelectors />
+        </Grid>
+      )}
+    </Grid>
+  )
+}

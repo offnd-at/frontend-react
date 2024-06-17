@@ -1,27 +1,43 @@
-import { Box, Container } from '@mui/material'
-import { Outlet } from 'react-router-dom'
-import Header from './Header'
-import Footer from './Footer'
+import { Container, Grid } from '@mui/material'
+import { Outlet, useLocation } from 'react-router-dom'
+import { Header } from './Header'
+import { Footer } from './Footer'
 
-function Layout() {
+export function Layout() {
+  const { pathname } = useLocation()
+
   return (
     <>
-      <Container
-        sx={{
-          py: 8,
-        }}
+      <Grid
+        container
+        alignItems='center'
+        justifyContent='center'
+        spacing={0}
       >
-        <Header />
-        <Box
-          sx={{
-            py: 4,
-          }}
-        />
-        <Outlet />
-      </Container>
+        <Grid
+          item
+          xs={12}
+          md={10}
+          xl={6}
+        >
+          <Container
+            sx={{
+              py: 2,
+            }}
+          >
+            <Header
+              isOnHomepage={pathname === '/'}
+              sx={{
+                pt: 4,
+                pb: 12,
+              }}
+            />
+            <Outlet />
+          </Container>
+        </Grid>
+      </Grid>
+
       <Footer />
     </>
   )
 }
-
-export default Layout

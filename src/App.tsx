@@ -1,10 +1,11 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import Layout from './components/layout/Layout'
-import Homepage from './pages/Homepage'
-import Stats from './pages/Stats'
+import { Layout } from './components/layout/Layout'
+import { Homepage } from './pages/Homepage'
+import { Stats } from './pages/Stats'
+import { NotFound } from './pages/NotFound'
 
-function App() {
+export function App() {
   return (
     <div className='App'>
       <Routes>
@@ -17,10 +18,12 @@ function App() {
             path='/s/:phrase'
             element={<Stats />}
           />
+          <Route
+            path='*'
+            element={<NotFound />}
+          />
         </Route>
       </Routes>
     </div>
   )
 }
-
-export default App
