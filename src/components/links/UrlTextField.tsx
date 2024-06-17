@@ -32,7 +32,6 @@ export function UrlTextField({
       }}
     >
       <TextField
-        label='URL'
         fullWidth
         value={url}
         onChange={(event) => setUrl(event.target.value)}

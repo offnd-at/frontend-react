@@ -21,56 +21,60 @@ export function FormatSelector({ sx }: FormatSelectorProps) {
 
   const hasFormats = Boolean(data?.data.formats?.length)
 
-  return isLoading ? (
-    <Skeleton
-      variant='rectangular'
-      height={41}
-    />
-  ) : (
-    <TextField
-      fullWidth
-      select
-      label='Format'
-      size='small'
-      InputProps={{
-        sx: {
-          borderRadius: 0,
-        },
-      }}
-      value={settingsContext.formatId ?? ''}
-      onChange={(event) =>
-        setSettingsContext((prev) => ({
-          ...prev,
-          formatId: Number(event.target.value),
-        }))
-      }
-    >
-      {data?.data.formats.map((format) => (
-        <MenuItem
-          key={format.value}
-          value={format.value}
+  return (
+    <Box sx={sx}>
+      {isLoading ? (
+        <Skeleton
+          variant='rectangular'
+          height={41}
+        />
+      ) : (
+        <TextField
+          fullWidth
+          select
+          label='Format'
+          size='small'
+          InputProps={{
+            sx: {
+              borderRadius: 0,
+            },
+          }}
+          value={settingsContext.formatId ?? ''}
+          onChange={(event) =>
+            setSettingsContext((prev) => ({
+              ...prev,
+              formatId: Number(event.target.value),
+            }))
+          }
         >
-          <Box
-            display='flex'
-            alignItems='center'
-          >
-            <Typography
-              component='span'
-              sx={{ ml: 1 }}
+          {data?.data.formats.map((format) => (
+            <MenuItem
+              key={format.value}
+              value={format.value}
             >
-              {mapFormatToFormatName(format)}
-            </Typography>
-          </Box>
-        </MenuItem>
-      ))}
-      {!hasFormats && (
-        <MenuItem
-          value={-1}
-          disabled
-        >
-          No items
-        </MenuItem>
+              <Box
+                display='flex'
+                alignItems='center'
+              >
+                <Typography
+                  component='span'
+                  sx={{ ml: 1 }}
+                >
+                  {mapFormatToFormatName(format)}
+                </Typography>
+              </Box>
+            </MenuItem>
+          ))}
+          {!hasFormats && (
+            <MenuItem
+              value={-1}
+              disabled
+            >
+              No items
+            </MenuItem>
+          )}
+        </TextField>
       )}
-    </TextField>
+    </Box>
   )
 }
