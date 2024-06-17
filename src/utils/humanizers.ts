@@ -1,3 +1,4 @@
+import { Format } from '../models/format'
 import { Language } from '../models/language'
 import { Theme } from '../models/theme'
 
@@ -20,6 +21,17 @@ export function humanizeLanguage(language: Language) {
       return 'English'
     case 1:
       return 'Polish'
+    default:
+      return undefined
+  }
+}
+
+export function humanizeFormat(format: Format) {
+  switch (format.value) {
+    case 0:
+      return 'kebab-case'
+    case 1:
+      return 'PascalCase'
     default:
       return undefined
   }

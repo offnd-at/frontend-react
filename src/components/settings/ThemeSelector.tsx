@@ -10,7 +10,7 @@ import {
 import { useGetThemesQuery } from '../../hooks/queries/useGetThemesQuery'
 import { useContext } from 'react'
 import { SettingsContext } from './SettingsContextProvider'
-import { mapThemeToThemeName } from '../../utils/mappers'
+import { humanizeTheme } from '../../utils/humanizers'
 
 interface ThemeSelectorProps {
   sx?: SxProps<Theme>
@@ -60,7 +60,7 @@ export function ThemeSelector({ sx }: ThemeSelectorProps) {
                   component='span'
                   sx={{ ml: 1 }}
                 >
-                  {mapThemeToThemeName(theme)}
+                  {humanizeTheme(theme)}
                 </Typography>
               </Box>
             </MenuItem>

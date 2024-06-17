@@ -10,7 +10,7 @@ import {
 import { useGetFormatsQuery } from '../../hooks/queries/useGetFormatsQuery'
 import { useContext } from 'react'
 import { SettingsContext } from './SettingsContextProvider'
-import { mapFormatToFormatName } from '../../utils/mappers'
+import { humanizeFormat } from '../../utils/humanizers'
 
 interface FormatSelectorProps {
   sx?: SxProps<Theme>
@@ -60,7 +60,7 @@ export function FormatSelector({ sx }: FormatSelectorProps) {
                   component='span'
                   sx={{ ml: 1 }}
                 >
-                  {mapFormatToFormatName(format)}
+                  {humanizeFormat(format)}
                 </Typography>
               </Box>
             </MenuItem>

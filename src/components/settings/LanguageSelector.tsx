@@ -9,12 +9,10 @@ import {
 } from '@mui/material'
 import ReactCountryFlag from 'react-country-flag'
 import { useGetLanguagesQuery } from '../../hooks/queries/useGetLanguagesQuery'
-import {
-  mapLanguageToCountryCode,
-  mapLanguageToLanguageName,
-} from '../../utils/mappers'
+import { mapLanguageToCountryCode } from '../../utils/mappers'
 import { SettingsContext } from './SettingsContextProvider'
 import { useContext } from 'react'
+import { humanizeLanguage } from '../../utils/humanizers'
 
 interface LanguageSelectorProps {
   sx?: SxProps<Theme>
@@ -68,7 +66,7 @@ export function LanguageSelector({ sx }: LanguageSelectorProps) {
                   component='span'
                   sx={{ ml: 1 }}
                 >
-                  {mapLanguageToLanguageName(language)}
+                  {humanizeLanguage(language)}
                 </Typography>
               </Box>
             </MenuItem>
