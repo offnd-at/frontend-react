@@ -3,7 +3,7 @@ import { UrlTextField } from './UrlTextField'
 import { useContext, useState } from 'react'
 import { useGenerateLinkMutation } from '../../hooks/mutations/useGenerateLinkMutation'
 import { SettingsContext } from '../settings/SettingsContextProvider'
-import { GeneratedLinkDisplay } from './GeneratedLinkDisplay'
+import { GeneratedLinks } from './GeneratedLinks'
 
 interface GenerateUrlCardProps {
   sx?: SxProps<Theme>
@@ -32,7 +32,7 @@ export function GenerateUrlCard({ sx }: GenerateUrlCardProps) {
         loading={isLoading}
         onSubmit={mutate}
       />
-      <GeneratedLinkDisplay
+      <GeneratedLinks
         sx={{
           mt: 2,
         }}

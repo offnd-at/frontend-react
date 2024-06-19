@@ -10,5 +10,7 @@ export function NotFound() {
     document.title = `offnd.at - ${pathname}`
   }, [])
 
-  return <ErrorStack errors={[redirectNotFound(pathname)]} />
+  return (
+    <ErrorStack errors={[redirectNotFound(decodeURIComponent(pathname))]} />
+  )
 }
