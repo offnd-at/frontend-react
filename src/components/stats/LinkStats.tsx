@@ -30,6 +30,10 @@ export function LinkStats({ loading, link, errors, sx }: LinkStatsProps) {
           <Box
             display='flex'
             alignItems='center'
+            sx={{
+              flexWrap: 'wrap',
+              wordBreak: 'break-all',
+            }}
           >
             <Typography variant='body1'>Target URL:</Typography>
             <a
@@ -40,16 +44,22 @@ export function LinkStats({ loading, link, errors, sx }: LinkStatsProps) {
                 display: 'flex',
               }}
             >
-              <Typography
-                sx={{ mx: 0.5 }}
-                variant='body1'
-              >
-                {link?.targetUrl}
-              </Typography>
+              <Typography variant='body1'>{link?.targetUrl}</Typography>
               <OpenInNew fontSize='small' />
             </a>
           </Box>
-          <Typography variant='body1'>Visits: {link?.visits}</Typography>
+          <Box
+            display='flex'
+            alignItems='center'
+            sx={{
+              mt: 4,
+              flexWrap: 'wrap',
+              wordBreak: 'break-all',
+            }}
+          >
+            <Typography variant='body1'>Visits:&nbsp;</Typography>
+            <Typography variant='body1'>{link?.visits}</Typography>
+          </Box>
         </>
       ) : (
         <ErrorStack errors={errors} />
