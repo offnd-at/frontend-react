@@ -35,7 +35,7 @@ export function LinkStats({ loading, link, errors, sx }: LinkStatsProps) {
               wordBreak: 'break-all',
             }}
           >
-            <Typography variant='body1'>Target URL:</Typography>
+            <Typography variant='body1'>Target URL:&nbsp;</Typography>
             <a
               target='_blank'
               href={link?.targetUrl}
