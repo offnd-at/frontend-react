@@ -1,7 +1,7 @@
 import { AxiosResponse, AxiosError } from 'axios'
 import { useQuery } from 'react-query'
 import { httpClient } from '../../http/httpClient'
-import { ApiErrorResponse } from '../../models/responses/apiErrorResponse'
+import { ProblemResponse } from '../../models/responses/problemResponse'
 import { GetThemesResponse } from '../../models/responses/getThemesResponse'
 import { useContext } from 'react'
 import { SettingsContext } from '../../components/settings/SettingsContextProvider'
@@ -12,7 +12,7 @@ export function useGetThemesQuery() {
 
   return useQuery<
     AxiosResponse<GetThemesResponse>,
-    AxiosError<ApiErrorResponse>
+    AxiosError<ProblemResponse>
   >('themes', () => httpClient.get<GetThemesResponse>('/themes'), {
     onSuccess: (data) =>
       setSettingsContext((prev) => ({

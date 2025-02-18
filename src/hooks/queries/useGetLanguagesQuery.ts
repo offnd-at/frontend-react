@@ -1,7 +1,7 @@
 import { AxiosResponse, AxiosError } from 'axios'
 import { useQuery } from 'react-query'
 import { httpClient } from '../../http/httpClient'
-import { ApiErrorResponse } from '../../models/responses/apiErrorResponse'
+import { ProblemResponse } from '../../models/responses/problemResponse'
 import { GetLanguagesResponse } from '../../models/responses/getLanguagesResponse'
 import { useContext } from 'react'
 import { SettingsContext } from '../../components/settings/SettingsContextProvider'
@@ -12,7 +12,7 @@ export function useGetLanguagesQuery() {
 
   return useQuery<
     AxiosResponse<GetLanguagesResponse>,
-    AxiosError<ApiErrorResponse>
+    AxiosError<ProblemResponse>
   >('languages', () => httpClient.get<GetLanguagesResponse>('/languages'), {
     onSuccess: (data) =>
       setSettingsContext((prev) => ({

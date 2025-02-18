@@ -1,7 +1,7 @@
 import { AxiosResponse, AxiosError } from 'axios'
 import { useQuery } from 'react-query'
 import { httpClient } from '../../http/httpClient'
-import { ApiErrorResponse } from '../../models/responses/apiErrorResponse'
+import { ProblemResponse } from '../../models/responses/problemResponse'
 import { GetFormatsResponse } from '../../models/responses/getFormatsResponse'
 import { first } from 'lodash'
 import { useContext } from 'react'
@@ -12,7 +12,7 @@ export function useGetFormatsQuery() {
 
   return useQuery<
     AxiosResponse<GetFormatsResponse>,
-    AxiosError<ApiErrorResponse>
+    AxiosError<ProblemResponse>
   >('formats', () => httpClient.get<GetFormatsResponse>('/formats'), {
     onSuccess: (data) =>
       setSettingsContext((prev) => ({
