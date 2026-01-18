@@ -8,18 +8,20 @@ import {
   Typography,
 } from '@mui/material'
 import { useGetThemesQuery } from '../../hooks/queries/useGetThemesQuery'
-import { useContext } from 'react'
-import { SettingsContext } from './SettingsContextProvider'
+import { useSettingsStore } from '../../stores/settingsStore'
 import { humanizeTheme } from '../../utils/humanizers'
+import { first } from 'lodash'
 
 interface ThemeSelectorProps {
   sx?: SxProps<Theme>
 }
 export function ThemeSelector({ sx }: ThemeSelectorProps) {
   const { data, isLoading } = useGetThemesQuery()
-  const { settingsContext, setSettingsContext } = useContext(SettingsContext)
+  const { themeId, setThemeId } = useSettingsStore()
 
   const hasThemes = Boolean(data?.data.themes?.length)
+  const defaultValue = first(data?.data.themes)?.value
+  const value = themeId ?? defaultValue ?? ''
 
   return (
     <Box sx={sx}>
@@ -39,13 +41,8 @@ export function ThemeSelector({ sx }: ThemeSelectorProps) {
               borderRadius: 0,
             },
           }}
-          value={settingsContext.themeId ?? ''}
-          onChange={(event) =>
-            setSettingsContext((prev) => ({
-              ...prev,
-              themeId: Number(event.target.value),
-            }))
-          }
+          value={value}
+          onChange={(event) => setThemeId(Number(event.target.value))}
         >
           {data?.data.themes.map((theme) => (
             <MenuItem

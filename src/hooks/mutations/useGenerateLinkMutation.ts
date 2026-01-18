@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 import { GenerateLinkRequest } from '../../models/requests/generateLinkRequest'
 import { httpClient } from '../../http/httpClient'
 import { GenerateLinkResponse } from '../../models/responses/generateLinkResponse'
@@ -9,5 +9,7 @@ export function useGenerateLinkMutation(request: GenerateLinkRequest) {
   return useMutation<
     AxiosResponse<GenerateLinkResponse>,
     AxiosError<ProblemResponse>
-  >(() => httpClient.post<GenerateLinkResponse>('/links', request))
+  >({
+    mutationFn: () => httpClient.post<GenerateLinkResponse>('/links', request),
+  })
 }

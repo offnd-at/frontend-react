@@ -8,18 +8,20 @@ import {
   Typography,
 } from '@mui/material'
 import { useGetFormatsQuery } from '../../hooks/queries/useGetFormatsQuery'
-import { useContext } from 'react'
-import { SettingsContext } from './SettingsContextProvider'
+import { useSettingsStore } from '../../stores/settingsStore'
 import { humanizeFormat } from '../../utils/humanizers'
+import { first } from 'lodash'
 
 interface FormatSelectorProps {
   sx?: SxProps<Theme>
 }
 export function FormatSelector({ sx }: FormatSelectorProps) {
   const { data, isLoading } = useGetFormatsQuery()
-  const { settingsContext, setSettingsContext } = useContext(SettingsContext)
+  const { formatId, setFormatId } = useSettingsStore()
 
   const hasFormats = Boolean(data?.data.formats?.length)
+  const defaultValue = first(data?.data.formats)?.value
+  const value = formatId ?? defaultValue ?? ''
 
   return (
     <Box sx={sx}>
@@ -39,13 +41,8 @@ export function FormatSelector({ sx }: FormatSelectorProps) {
               borderRadius: 0,
             },
           }}
-          value={settingsContext.formatId ?? ''}
-          onChange={(event) =>
-            setSettingsContext((prev) => ({
-              ...prev,
-              formatId: Number(event.target.value),
-            }))
-          }
+          value={value}
+          onChange={(event) => setFormatId(Number(event.target.value))}
         >
           {data?.data.formats.map((format) => (
             <MenuItem

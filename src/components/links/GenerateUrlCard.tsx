@@ -1,8 +1,8 @@
 import { Box, SxProps, Theme, Typography } from '@mui/material'
 import { UrlTextField } from './UrlTextField'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { useGenerateLinkMutation } from '../../hooks/mutations/useGenerateLinkMutation'
-import { SettingsContext } from '../settings/SettingsContextProvider'
+import { useAppliedSettings } from '../../hooks/useAppliedSettings'
 import { GeneratedLinks } from './GeneratedLinks'
 
 interface GenerateUrlCardProps {
@@ -11,10 +11,10 @@ interface GenerateUrlCardProps {
 
 export function GenerateUrlCard({ sx }: GenerateUrlCardProps) {
   const [targetUrl, setTargetUrl] = useState<string>('')
-  const { settingsContext } = useContext(SettingsContext)
+  const settings = useAppliedSettings()
 
-  const { data, error, isLoading, mutate } = useGenerateLinkMutation({
-    ...settingsContext,
+  const { data, error, isPending, mutate } = useGenerateLinkMutation({
+    ...settings,
     targetUrl,
   })
 
@@ -29,7 +29,7 @@ export function GenerateUrlCard({ sx }: GenerateUrlCardProps) {
       <UrlTextField
         url={targetUrl}
         setUrl={setTargetUrl}
-        loading={isLoading}
+        loading={isPending}
         onSubmit={mutate}
       />
       <GeneratedLinks

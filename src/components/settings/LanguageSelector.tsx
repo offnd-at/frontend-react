@@ -10,18 +10,20 @@ import {
 import ReactCountryFlag from 'react-country-flag'
 import { useGetLanguagesQuery } from '../../hooks/queries/useGetLanguagesQuery'
 import { mapLanguageToCountryCode } from '../../utils/mappers'
-import { SettingsContext } from './SettingsContextProvider'
-import { useContext } from 'react'
+import { useSettingsStore } from '../../stores/settingsStore'
 import { humanizeLanguage } from '../../utils/humanizers'
+import { first } from 'lodash'
 
 interface LanguageSelectorProps {
   sx?: SxProps<Theme>
 }
 export function LanguageSelector({ sx }: LanguageSelectorProps) {
   const { data, isLoading } = useGetLanguagesQuery()
-  const { settingsContext, setSettingsContext } = useContext(SettingsContext)
+  const { languageId, setLanguageId } = useSettingsStore()
 
   const hasLanguages = Boolean(data?.data.languages?.length)
+  const defaultValue = first(data?.data.languages)?.value
+  const value = languageId ?? defaultValue ?? ''
 
   return (
     <Box sx={sx}>
@@ -41,13 +43,8 @@ export function LanguageSelector({ sx }: LanguageSelectorProps) {
               borderRadius: 0,
             },
           }}
-          value={settingsContext.languageId ?? ''}
-          onChange={(event) =>
-            setSettingsContext((prev) => ({
-              ...prev,
-              languageId: Number(event.target.value),
-            }))
-          }
+          value={value}
+          onChange={(event) => setLanguageId(Number(event.target.value))}
         >
           {data?.data.languages.map((language) => (
             <MenuItem
