@@ -15,10 +15,7 @@ export function Layout() {
         spacing={0}
       >
         <Grid
-          item
-          xs={12}
-          md={10}
-          xl={6}
+          size={{ xs: 12, md: 10, xl: 6 }}
         >
           <Container
             sx={{

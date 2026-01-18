@@ -16,18 +16,19 @@ export function Header({ isOnHomepage, sx }: HeaderProps) {
       sx={sx}
     >
       <Grid
-        item
-        xs={isOnHomepage ? 8 : 12}
+        size={{ xs: isOnHomepage ? 8 : 12 }}
       >
-        <Link to='/'>
+        <Link
+          to='/'
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
           <HeaderLogo />
           <HeaderText />
         </Link>
       </Grid>
       {isOnHomepage && (
         <Grid
-          item
-          xs={4}
+          size={{ xs: 4 }}
         >
           <SettingsSelectors />
         </Grid>
