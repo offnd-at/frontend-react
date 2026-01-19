@@ -1,9 +1,10 @@
 import { Theme } from '@emotion/react'
 import { Box, Paper, Stack, SxProps } from '@mui/material'
-import { ApiError } from '../../models/apiError'
-import { ErrorStack } from '../errors/ErrorStack'
-import { GenerateLinkResponse } from '../../models/responses/generateLinkResponse'
+
 import { LinkDisplay } from './LinkDisplay'
+import { ApiError } from '../../models/apiError'
+import { GenerateLinkResponse } from '../../models/responses/generateLinkResponse'
+import { ErrorStack } from '../errors/ErrorStack'
 
 interface GeneratedLinksProps {
   response?: GenerateLinkResponse
@@ -22,14 +23,8 @@ export function GeneratedLinks({ response, errors, sx }: GeneratedLinksProps) {
           }}
         >
           <Stack spacing={2}>
-            <LinkDisplay
-              title='Your URL:'
-              url={response?.url}
-            />
-            <LinkDisplay
-              title='Stats for your URL:'
-              url={response?.statsUrl}
-            />
+            <LinkDisplay title='Your URL:' url={response?.url} />
+            <LinkDisplay title='Stats for your URL:' url={response?.statsUrl} />
           </Stack>
         </Paper>
       )}

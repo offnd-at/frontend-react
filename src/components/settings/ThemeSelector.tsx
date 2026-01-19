@@ -1,16 +1,10 @@
 import { Theme } from '@emotion/react'
-import {
-  Box,
-  MenuItem,
-  Skeleton,
-  SxProps,
-  TextField,
-  Typography,
-} from '@mui/material'
+import { Box, MenuItem, Skeleton, SxProps, TextField, Typography } from '@mui/material'
+import { first } from 'lodash'
+
 import { useGetThemesQuery } from '../../hooks/queries/useGetThemesQuery'
 import { useSettingsStore } from '../../stores/settingsStore'
 import { humanizeTheme } from '../../utils/humanizers'
-import { first } from 'lodash'
 
 interface ThemeSelectorProps {
   sx?: SxProps<Theme>
@@ -26,10 +20,7 @@ export function ThemeSelector({ sx }: ThemeSelectorProps) {
   return (
     <Box sx={sx}>
       {isLoading ? (
-        <Skeleton
-          variant='rectangular'
-          height={41}
-        />
+        <Skeleton variant='rectangular' height={41} />
       ) : (
         <TextField
           fullWidth
@@ -45,28 +36,16 @@ export function ThemeSelector({ sx }: ThemeSelectorProps) {
           onChange={(event) => setThemeId(Number(event.target.value))}
         >
           {data?.data.themes.map((theme) => (
-            <MenuItem
-              key={theme.value}
-              value={theme.value}
-            >
-              <Box
-                display='flex'
-                alignItems='center'
-              >
-                <Typography
-                  component='span'
-                  sx={{ ml: 1 }}
-                >
+            <MenuItem key={theme.value} value={theme.value}>
+              <Box display='flex' alignItems='center'>
+                <Typography component='span' sx={{ ml: 1 }}>
                   {humanizeTheme(theme)}
                 </Typography>
               </Box>
             </MenuItem>
           ))}
           {!hasThemes && (
-            <MenuItem
-              value={-1}
-              disabled
-            >
+            <MenuItem value={-1} disabled>
               No items
             </MenuItem>
           )}

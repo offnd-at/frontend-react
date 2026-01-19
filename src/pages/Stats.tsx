@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+
 import { LinkStats } from '../components/stats/LinkStats'
 import { LinkStatsHeader } from '../components/stats/LinkStatsHeader'
 import { useGetLinkByPhraseQuery } from '../hooks/queries/useGetLinkByPhraseQuery'
@@ -12,7 +13,7 @@ export function Stats() {
 
   useEffect(() => {
     document.title = `offnd.at - /${phrase}`
-  }, [])
+  }, [phrase])
 
   return (
     <>

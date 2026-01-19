@@ -1,12 +1,13 @@
-import { useSettingsStore } from '../stores/settingsStore'
-import { useGetLanguagesQuery } from '../hooks/queries/useGetLanguagesQuery'
-import { useGetFormatsQuery } from '../hooks/queries/useGetFormatsQuery'
-import { useGetThemesQuery } from '../hooks/queries/useGetThemesQuery'
 import { first } from 'lodash'
+
+import { useGetFormatsQuery } from '../hooks/queries/useGetFormatsQuery'
+import { useGetLanguagesQuery } from '../hooks/queries/useGetLanguagesQuery'
+import { useGetThemesQuery } from '../hooks/queries/useGetThemesQuery'
+import { useSettingsStore } from '../stores/settingsStore'
 
 export function useAppliedSettings() {
   const { languageId, formatId, themeId } = useSettingsStore()
-  
+
   const { data: languagesData } = useGetLanguagesQuery()
   const { data: formatsData } = useGetFormatsQuery()
   const { data: themesData } = useGetThemesQuery()

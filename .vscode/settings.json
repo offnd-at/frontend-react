@@ -14,5 +14,8 @@
   "prettier.singleAttributePerLine": true,
   "editor.gotoLocation.multipleDeclarations": "goto",
   "editor.gotoLocation.multipleDefinitions": "goto",
-  "editor.gotoLocation.multipleImplementations": "goto"
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }

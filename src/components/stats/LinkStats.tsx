@@ -1,7 +1,8 @@
-import { Stack, Skeleton, Typography, Box, SxProps, Theme } from '@mui/material'
-import { Link } from '../../models/link'
 import { OpenInNew } from '@mui/icons-material'
+import { Stack, Skeleton, Typography, Box, SxProps, Theme } from '@mui/material'
+
 import { ApiError } from '../../models/apiError'
+import { Link } from '../../models/link'
 import { ErrorStack } from '../errors/ErrorStack'
 
 interface LinkStatsProps {
@@ -16,16 +17,10 @@ export function LinkStats({ loading, link, errors, sx }: LinkStatsProps) {
     <Box sx={sx}>
       {loading ? (
         <Stack spacing={1}>
-          <Skeleton
-            variant='rectangular'
-            height={24}
-          />
-          <Skeleton
-            variant='rectangular'
-            height={24}
-          />
+          <Skeleton variant='rectangular' height={24} />
+          <Skeleton variant='rectangular' height={24} />
         </Stack>
-      ) : Boolean(link) ? (
+      ) : link ? (
         <>
           <Box
             display='flex'
@@ -43,6 +38,7 @@ export function LinkStats({ loading, link, errors, sx }: LinkStatsProps) {
                 alignItems: 'center',
                 display: 'flex',
               }}
+              rel='noreferrer'
             >
               <Typography variant='body1'>{link?.targetUrl}</Typography>
               <OpenInNew fontSize='small' />

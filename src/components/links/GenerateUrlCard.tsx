@@ -1,9 +1,10 @@
 import { Box, SxProps, Theme, Typography } from '@mui/material'
-import { UrlTextField } from './UrlTextField'
 import { useState } from 'react'
+
+import { GeneratedLinks } from './GeneratedLinks'
+import { UrlTextField } from './UrlTextField'
 import { useGenerateLinkMutation } from '../../hooks/mutations/useGenerateLinkMutation'
 import { useAppliedSettings } from '../../hooks/useAppliedSettings'
-import { GeneratedLinks } from './GeneratedLinks'
 
 interface GenerateUrlCardProps {
   sx?: SxProps<Theme>
@@ -20,18 +21,10 @@ export function GenerateUrlCard({ sx }: GenerateUrlCardProps) {
 
   return (
     <Box sx={sx}>
-      <Typography
-        variant='h6'
-        fontWeight='bold'
-      >
+      <Typography variant='h6' fontWeight='bold'>
         Generate a link
       </Typography>
-      <UrlTextField
-        url={targetUrl}
-        setUrl={setTargetUrl}
-        loading={isPending}
-        onSubmit={mutate}
-      />
+      <UrlTextField url={targetUrl} setUrl={setTargetUrl} loading={isPending} onSubmit={mutate} />
       <GeneratedLinks
         sx={{
           mt: 2,

@@ -1,6 +1,7 @@
 import { ContentCopy } from '@mui/icons-material'
 import { Box, Typography, IconButton, SxProps, Theme } from '@mui/material'
 import { useSnackbar } from 'notistack'
+import { Link } from 'react-router-dom'
 
 interface LinkDisplayProps {
   title?: string
@@ -13,11 +14,7 @@ export function LinkDisplay({ title, url, sx }: LinkDisplayProps) {
 
   return (
     <Box sx={sx}>
-      <Typography
-        variant='subtitle1'
-        fontWeight='bold'
-        textAlign='center'
-      >
+      <Typography variant='subtitle1' fontWeight='bold' textAlign='center'>
         {title}
       </Typography>
       <Box
@@ -29,12 +26,9 @@ export function LinkDisplay({ title, url, sx }: LinkDisplayProps) {
           wordBreak: 'break-word',
         }}
       >
-        <a
-          href={url}
-          target='_blank'
-        >
+        <Link to={url ?? ''} target='_blank' style={{ textDecoration: 'none', color: 'inherit' }}>
           <Typography textAlign='center'>{url}</Typography>
-        </a>
+        </Link>
         <IconButton
           onClick={() => {
             enqueueSnackbar('Copied to clipboard', {
