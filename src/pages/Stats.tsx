@@ -23,7 +23,7 @@ export function Stats() {
           my: 8,
         }}
         loading={isFetching}
-        link={data?.data.link}
+        linkResponse={data?.data}
         errors={error?.response?.data?.errors}
       />
     </>

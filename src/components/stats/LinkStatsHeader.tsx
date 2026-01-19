@@ -10,9 +10,7 @@ export function LinkStatsHeader({ phrase, sx }: LinkStatsHeaderProps) {
     <Typography
       variant='h6'
       fontWeight='bold'
-      sx={{
-        ...sx,
-      }}
+      sx={sx}
     >
       /{phrase}
     </Typography>
