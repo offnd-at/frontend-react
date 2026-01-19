@@ -62,13 +62,13 @@ jobs:
           fetch-depth: 0
 
       - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v4.1.0
+        uses: gittools/actions/gitversion/setup@v4.2.0
         with:
           versionSpec: '6.3.x'
 
       - name: Determine version
         id: git-version
-        uses: gittools/actions/gitversion/execute@v4.1.0
+        uses: gittools/actions/gitversion/execute@v4.2.0
 
   docker-publish:
     name: Build and publish Docker image for React application
