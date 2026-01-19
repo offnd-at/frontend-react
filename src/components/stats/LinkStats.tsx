@@ -1,9 +1,9 @@
 import { OpenInNew } from '@mui/icons-material'
 import { Stack, Skeleton, Typography, Box, SxProps, Theme } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { GetLinkResponse } from '@/models/responses/getLinkResponse'
 import { ApiError } from '../../models/apiError'
 import { ErrorStack } from '../errors/ErrorStack'
-import { GetLinkResponse } from '@/models/responses/getLinkResponse'
-import { Link } from 'react-router-dom'
 
 interface LinkStatsProps {
   loading: boolean
@@ -45,7 +45,9 @@ export function LinkStats({ loading, linkResponse, errors, sx }: LinkStatsProps)
               >
                 <Stack direction='row' spacing={0.5} alignItems='center'>
                   <Typography variant='body1'>{linkResponse?.targetUrl}</Typography>
-                  <Box display='flex'><OpenInNew fontSize='small' /></Box>
+                  <Box display='flex'>
+                    <OpenInNew fontSize='small' />
+                  </Box>
                 </Stack>
               </Link>
             </Stack>
