@@ -33,7 +33,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
-    "@types/lodash": "^4.17.5",
+    "@types/lodash": "^4.17.23",
     "@types/node": "^25.0.9",
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
@@ -50,7 +50,7 @@
     "jsdom": "^27.4.0",
     "prettier": "^3.8.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.53.0",
+    "typescript-eslint": "^8.53.1",
     "vite": "^7.3.1",
     "vitest": "^4.0.17"
   }
