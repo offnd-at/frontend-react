@@ -1,5 +1,10 @@
-import { Link } from '../link'
+import { LinkVisit } from '../linkVisit'
 
 export type GetLinkResponse = {
-  link: Link
+  id: string
+  phrase: string
+  targetUrl: string
+  visits: number
+  recentVisits: LinkVisit[]
+  createdAt: Date
 }

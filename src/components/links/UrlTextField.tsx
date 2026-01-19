@@ -1,13 +1,7 @@
 import { Theme } from '@emotion/react'
 import { Close } from '@mui/icons-material'
 import { LoadingButton } from '@mui/lab'
-import {
-  Box,
-  IconButton,
-  InputAdornment,
-  SxProps,
-  TextField,
-} from '@mui/material'
+import { Box, IconButton, InputAdornment, SxProps, TextField } from '@mui/material'
 
 interface UrlTextFieldProps {
   url: string
@@ -17,13 +11,7 @@ interface UrlTextFieldProps {
   sx?: SxProps<Theme>
 }
 
-export function UrlTextField({
-  url,
-  setUrl,
-  loading,
-  onSubmit,
-  sx,
-}: UrlTextFieldProps) {
+export function UrlTextField({ url, setUrl, loading, onSubmit, sx }: UrlTextFieldProps) {
   return (
     <Box
       sx={{
@@ -42,11 +30,7 @@ export function UrlTextField({
           },
           endAdornment: url.length > 0 && (
             <InputAdornment position='end'>
-              <IconButton
-                disableRipple
-                onClick={() => setUrl('')}
-                edge='end'
-              >
+              <IconButton disableRipple onClick={() => setUrl('')} edge='end'>
                 <Close />
               </IconButton>
             </InputAdornment>

@@ -1,18 +1,20 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "vscode.typescript-language-features",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": false,
-  "prettier.semi": false,
-  "prettier.jsxSingleQuote": true,
-  "prettier.singleQuote": true,
   "editor.quickSuggestions": {
     "strings": "on"
   },
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
-  "prettier.singleAttributePerLine": true,
   "editor.gotoLocation.multipleDeclarations": "goto",
   "editor.gotoLocation.multipleDefinitions": "goto",
-  "editor.gotoLocation.multipleImplementations": "goto"
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
 }

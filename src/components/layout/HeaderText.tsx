@@ -7,12 +7,7 @@ interface HeaderTextProps {
 export function HeaderText({ sx }: HeaderTextProps) {
   return (
     <Box sx={sx}>
-      <Typography
-        display='flex'
-        color='primary'
-        variant='h2'
-        fontWeight='bold'
-      >
+      <Typography display='flex' color='primary' variant='h2' fontWeight='bold'>
         offnd.at
       </Typography>
     </Box>

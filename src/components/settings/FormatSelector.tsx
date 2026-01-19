@@ -1,15 +1,9 @@
 import { Theme } from '@emotion/react'
-import {
-  Box,
-  MenuItem,
-  Skeleton,
-  SxProps,
-  TextField,
-  Typography,
-} from '@mui/material'
+import { Box, MenuItem, Skeleton, SxProps, TextField, Typography } from '@mui/material'
+import { first } from 'lodash'
+
 import { useGetFormatsQuery } from '../../hooks/queries/useGetFormatsQuery'
-import { useContext } from 'react'
-import { SettingsContext } from './SettingsContextProvider'
+import { useSettingsStore } from '../../stores/settingsStore'
 import { humanizeFormat } from '../../utils/humanizers'
 
 interface FormatSelectorProps {
@@ -17,17 +11,16 @@ interface FormatSelectorProps {
 }
 export function FormatSelector({ sx }: FormatSelectorProps) {
   const { data, isLoading } = useGetFormatsQuery()
-  const { settingsContext, setSettingsContext } = useContext(SettingsContext)
+  const { formatId, setFormatId } = useSettingsStore()
 
   const hasFormats = Boolean(data?.data.formats?.length)
+  const defaultValue = first(data?.data.formats)?.value
+  const value = formatId ?? defaultValue ?? ''
 
   return (
     <Box sx={sx}>
       {isLoading ? (
-        <Skeleton
-          variant='rectangular'
-          height={41}
-        />
+        <Skeleton variant='rectangular' height={41} />
       ) : (
         <TextField
           fullWidth
@@ -39,37 +32,20 @@ export function FormatSelector({ sx }: FormatSelectorProps) {
               borderRadius: 0,
             },
           }}
-          value={settingsContext.formatId ?? ''}
-          onChange={(event) =>
-            setSettingsContext((prev) => ({
-              ...prev,
-              formatId: Number(event.target.value),
-            }))
-          }
+          value={value}
+          onChange={(event) => setFormatId(Number(event.target.value))}
         >
           {data?.data.formats.map((format) => (
-            <MenuItem
-              key={format.value}
-              value={format.value}
-            >
-              <Box
-                display='flex'
-                alignItems='center'
-              >
-                <Typography
-                  component='span'
-                  sx={{ ml: 1 }}
-                >
+            <MenuItem key={format.value} value={format.value}>
+              <Box display='flex' alignItems='center'>
+                <Typography component='span' sx={{ ml: 1 }}>
                   {humanizeFormat(format)}
                 </Typography>
               </Box>
             </MenuItem>
           ))}
           {!hasFormats && (
-            <MenuItem
-              value={-1}
-              disabled
-            >
+            <MenuItem value={-1} disabled>
               No items
             </MenuItem>
           )}

@@ -1,32 +1,27 @@
-import { Stack, Skeleton, Typography, Box, SxProps, Theme } from '@mui/material'
-import { Link } from '../../models/link'
 import { OpenInNew } from '@mui/icons-material'
+import { Stack, Skeleton, Typography, Box, SxProps, Theme } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { GetLinkResponse } from '@/models/responses/getLinkResponse'
 import { ApiError } from '../../models/apiError'
 import { ErrorStack } from '../errors/ErrorStack'
 
 interface LinkStatsProps {
   loading: boolean
-  link?: Link
+  linkResponse?: GetLinkResponse
   errors?: ApiError[]
   sx?: SxProps<Theme>
 }
 
-export function LinkStats({ loading, link, errors, sx }: LinkStatsProps) {
+export function LinkStats({ loading, linkResponse, errors, sx }: LinkStatsProps) {
   return (
     <Box sx={sx}>
       {loading ? (
-        <Stack spacing={1}>
-          <Skeleton
-            variant='rectangular'
-            height={24}
-          />
-          <Skeleton
-            variant='rectangular'
-            height={24}
-          />
+        <Stack spacing={2}>
+          <Skeleton variant='rectangular' height={24} />
+          <Skeleton variant='rectangular' height={24} />
         </Stack>
-      ) : Boolean(link) ? (
-        <>
+      ) : linkResponse ? (
+        <Stack spacing={2}>
           <Box
             display='flex'
             alignItems='center'
@@ -35,32 +30,42 @@ export function LinkStats({ loading, link, errors, sx }: LinkStatsProps) {
               wordBreak: 'break-all',
             }}
           >
-            <Typography variant='body1'>Target URL:&nbsp;</Typography>
-            <a
-              target='_blank'
-              href={link?.targetUrl}
-              style={{
-                alignItems: 'center',
-                display: 'flex',
-              }}
-            >
-              <Typography variant='body1'>{link?.targetUrl}</Typography>
-              <OpenInNew fontSize='small' />
-            </a>
+            <Stack direction='row' spacing={1} alignItems='center'>
+              <Typography variant='body1'>Target URL:</Typography>
+              <Link
+                target='_blank'
+                to={linkResponse?.targetUrl ?? ''}
+                style={{
+                  alignItems: 'center',
+                  display: 'flex',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                }}
+                rel='noreferrer'
+              >
+                <Stack direction='row' spacing={0.5} alignItems='center'>
+                  <Typography variant='body1'>{linkResponse?.targetUrl}</Typography>
+                  <Box display='flex'>
+                    <OpenInNew fontSize='small' />
+                  </Box>
+                </Stack>
+              </Link>
+            </Stack>
           </Box>
           <Box
             display='flex'
             alignItems='center'
             sx={{
-              mt: 4,
               flexWrap: 'wrap',
               wordBreak: 'break-all',
             }}
           >
-            <Typography variant='body1'>Visits:&nbsp;</Typography>
-            <Typography variant='body1'>{link?.visits}</Typography>
+            <Stack direction='row' spacing={1} alignItems='center'>
+              <Typography variant='body1'>Visits:</Typography>
+              <Typography variant='body1'>{linkResponse?.visits}</Typography>
+            </Stack>
           </Box>
-        </>
+        </Stack>
       ) : (
         <ErrorStack errors={errors} />
       )}
