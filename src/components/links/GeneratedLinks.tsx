@@ -17,6 +17,7 @@ export function GeneratedLinks({ response, errors, sx }: GeneratedLinksProps) {
     <Box sx={sx}>
       {Boolean(response) && (
         <Paper
+          data-testid='generated-links-container'
           sx={{
             borderRadius: 0,
             p: 2,
@@ -28,7 +29,9 @@ export function GeneratedLinks({ response, errors, sx }: GeneratedLinksProps) {
           </Stack>
         </Paper>
       )}
-      {Boolean(errors?.length) && <ErrorStack errors={errors} />}
+      {Boolean(errors?.length) && (
+        <ErrorStack data-testid='generated-links-errors' errors={errors} />
+      )}
     </Box>
   )
 }

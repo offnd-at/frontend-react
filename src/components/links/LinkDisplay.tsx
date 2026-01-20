@@ -30,6 +30,7 @@ export function LinkDisplay({ title, url, sx }: LinkDisplayProps) {
           <Typography textAlign='center'>{url}</Typography>
         </Link>
         <IconButton
+          data-testid='copy-button'
           onClick={() => {
             enqueueSnackbar('Copied to clipboard', {
               autoHideDuration: 2000,

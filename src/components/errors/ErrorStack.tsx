@@ -12,7 +12,7 @@ export function ErrorStack({ errors, sx }: ErrorStackProps) {
     <Box sx={sx}>
       <Stack spacing={2}>
         {(errors ?? [unexpectedError]).map((error) => (
-          <Alert key={error.code} variant='filled' severity='error'>
+          <Alert data-testid='error-alert' key={error.code} variant='filled' severity='error'>
             {error.message}
           </Alert>
         ))}

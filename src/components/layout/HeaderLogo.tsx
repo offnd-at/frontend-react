@@ -1,3 +1,5 @@
 export function HeaderLogo() {
-  return <img src={'/logo.png'} width={128} height={128} />
+  return (
+    <img data-testid='header-logo' src={'/logo.png'} alt='offnd.at logo' width={128} height={128} />
+  )
 }

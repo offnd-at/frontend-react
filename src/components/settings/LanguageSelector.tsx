@@ -25,10 +25,10 @@ export function LanguageSelector({ sx }: LanguageSelectorProps) {
         <Skeleton variant='rectangular' height={41} />
       ) : (
         <TextField
+          data-testid='language-select'
           fullWidth
           select
           label='Language'
-          size='small'
           InputProps={{
             sx: {
               borderRadius: 0,

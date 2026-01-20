@@ -23,10 +23,10 @@ export function FormatSelector({ sx }: FormatSelectorProps) {
         <Skeleton variant='rectangular' height={41} />
       ) : (
         <TextField
+          data-testid='format-select'
           fullWidth
           select
           label='Format'
-          size='small'
           InputProps={{
             sx: {
               borderRadius: 0,

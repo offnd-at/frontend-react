@@ -23,10 +23,10 @@ export function ThemeSelector({ sx }: ThemeSelectorProps) {
         <Skeleton variant='rectangular' height={41} />
       ) : (
         <TextField
+          data-testid='theme-select'
           fullWidth
           select
           label='Theme'
-          size='small'
           InputProps={{
             sx: {
               borderRadius: 0,

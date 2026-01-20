@@ -31,7 +31,7 @@ describe('ErrorStack', () => {
 
     render(<ErrorStack errors={errors} />)
 
-    const alerts = screen.getAllByRole('alert')
+    const alerts = screen.getAllByTestId('error-alert')
     expect(alerts).toHaveLength(3)
   })
 })

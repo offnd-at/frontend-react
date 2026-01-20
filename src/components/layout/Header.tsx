@@ -20,7 +20,7 @@ export function Header({ isOnHomepage, sx }: HeaderProps) {
         </Link>
       </Grid>
       {isOnHomepage && (
-        <Grid size={{ xs: 4 }}>
+        <Grid data-testid='header-settings' size={{ xs: 4 }}>
           <SettingsSelectors />
         </Grid>
       )}

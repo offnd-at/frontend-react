@@ -17,8 +17,8 @@ export function LinkStats({ loading, linkResponse, errors, sx }: LinkStatsProps)
     <Box sx={sx}>
       {loading ? (
         <Stack spacing={2}>
-          <Skeleton variant='rectangular' height={24} />
-          <Skeleton variant='rectangular' height={24} />
+          <Skeleton data-testid='loading-skeleton' variant='rectangular' height={24} />
+          <Skeleton data-testid='loading-skeleton' variant='rectangular' height={24} />
         </Stack>
       ) : linkResponse ? (
         <Stack spacing={2}>
@@ -44,7 +44,9 @@ export function LinkStats({ loading, linkResponse, errors, sx }: LinkStatsProps)
                 rel='noreferrer'
               >
                 <Stack direction='row' spacing={0.5} alignItems='center'>
-                  <Typography variant='body1'>{linkResponse?.targetUrl}</Typography>
+                  <Typography variant='body1' data-testid='target-url'>
+                    {linkResponse?.targetUrl}
+                  </Typography>
                   <Box display='flex'>
                     <OpenInNew fontSize='small' />
                   </Box>
@@ -62,7 +64,9 @@ export function LinkStats({ loading, linkResponse, errors, sx }: LinkStatsProps)
           >
             <Stack direction='row' spacing={1} alignItems='center'>
               <Typography variant='body1'>Visits:</Typography>
-              <Typography variant='body1'>{linkResponse?.visits}</Typography>
+              <Typography variant='body1' data-testid='visits-count'>
+                {linkResponse?.visits}
+              </Typography>
             </Stack>
           </Box>
         </Stack>

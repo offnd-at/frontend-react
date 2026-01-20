@@ -30,7 +30,12 @@ export function UrlTextField({ url, setUrl, loading, onSubmit, sx }: UrlTextFiel
           },
           endAdornment: url.length > 0 && (
             <InputAdornment position='end'>
-              <IconButton disableRipple onClick={() => setUrl('')} edge='end'>
+              <IconButton
+                data-testid='clear-button'
+                disableRipple
+                onClick={() => setUrl('')}
+                edge='end'
+              >
                 <Close />
               </IconButton>
             </InputAdornment>
