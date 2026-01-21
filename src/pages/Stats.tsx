@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { LinkStats } from '../components/stats/LinkStats'
 import { LinkStatsHeader } from '../components/stats/LinkStatsHeader'
 import { useGetLinkByPhraseQuery } from '../hooks/queries/useGetLinkByPhraseQuery'
+import { Stack } from '@mui/material'
 
 export function Stats() {
   const { pathname } = useLocation()
@@ -16,16 +17,13 @@ export function Stats() {
   }, [phrase])
 
   return (
-    <>
+    <Stack spacing={4}>
       <LinkStatsHeader phrase={phrase} />
       <LinkStats
-        sx={{
-          my: 8,
-        }}
         loading={isFetching}
         linkResponse={data?.data}
         errors={error?.response?.data?.errors}
       />
-    </>
+    </Stack>
   )
 }

@@ -27,9 +27,9 @@ describe('GeneratedLinks', () => {
     renderWithProviders(<GeneratedLinks response={response} />)
 
     expect(screen.getByTestId('generated-links-container')).toBeInTheDocument()
-    expect(screen.getByText('Your URL:')).toBeInTheDocument()
+    expect(screen.getByText('Your URL')).toBeInTheDocument()
     expect(screen.getByText('https://offnd.at/test')).toBeInTheDocument()
-    expect(screen.getByText('Stats for your URL:')).toBeInTheDocument()
+    expect(screen.getByText('Stats for your URL')).toBeInTheDocument()
     expect(screen.getByText('https://offnd.at/stats/test')).toBeInTheDocument()
   })
 

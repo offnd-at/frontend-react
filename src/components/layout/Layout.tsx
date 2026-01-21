@@ -20,7 +20,7 @@ export function Layout() {
               isOnHomepage={pathname === '/'}
               sx={{
                 pt: 4,
-                pb: 12,
+                pb: 4,
               }}
             />
             <Outlet />

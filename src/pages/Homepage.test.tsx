@@ -21,7 +21,7 @@ describe('Homepage', () => {
     fireEvent.click(button)
 
     await waitFor(() => {
-      expect(screen.getByText('Your URL:')).toBeInTheDocument()
+      expect(screen.getByText('Your URL')).toBeInTheDocument()
       expect(screen.getByText('http://offnd.at/test-phrase')).toBeInTheDocument()
     })
   })

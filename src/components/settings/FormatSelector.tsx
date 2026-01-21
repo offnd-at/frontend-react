@@ -27,9 +27,12 @@ export function FormatSelector({ sx }: FormatSelectorProps) {
           fullWidth
           select
           label='Format'
-          InputProps={{
-            sx: {
-              borderRadius: 0,
+          size='small'
+          slotProps={{
+            input: {
+              sx: {
+                borderRadius: 0,
+              },
             },
           }}
           value={value}
@@ -38,7 +41,7 @@ export function FormatSelector({ sx }: FormatSelectorProps) {
           {data?.data.formats.map((format) => (
             <MenuItem key={format.value} value={format.value}>
               <Box display='flex' alignItems='center'>
-                <Typography component='span' sx={{ ml: 1 }}>
+                <Typography variant='body2' component='span' sx={{ ml: 1 }}>
                   {humanizeFormat(format)}
                 </Typography>
               </Box>

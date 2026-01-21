@@ -27,9 +27,12 @@ export function ThemeSelector({ sx }: ThemeSelectorProps) {
           fullWidth
           select
           label='Theme'
-          InputProps={{
-            sx: {
-              borderRadius: 0,
+          size='small'
+          slotProps={{
+            input: {
+              sx: {
+                borderRadius: 0,
+              },
             },
           }}
           value={value}
@@ -38,7 +41,7 @@ export function ThemeSelector({ sx }: ThemeSelectorProps) {
           {data?.data.themes.map((theme) => (
             <MenuItem key={theme.value} value={theme.value}>
               <Box display='flex' alignItems='center'>
-                <Typography component='span' sx={{ ml: 1 }}>
+                <Typography variant='body2' component='span' sx={{ ml: 1 }}>
                   {humanizeTheme(theme)}
                 </Typography>
               </Box>
