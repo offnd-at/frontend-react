@@ -9,9 +9,11 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 
 import { App } from './App'
+import { ErrorFallback } from './components/errors/ErrorFallback'
 import { ScrollToTop } from './components/ScrollToTop'
 import { queryClient } from './http/queryClient'
 import { appTheme } from './themes/appTheme'
+import { ErrorBoundary } from 'react-error-boundary'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -19,10 +21,18 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <SnackbarProvider>
         <ThemeProvider theme={appTheme}>
           <CssBaseline />
-          <BrowserRouter>
-            <ScrollToTop />
-            <App />
-          </BrowserRouter>
+          <ErrorBoundary
+            FallbackComponent={ErrorFallback}
+            onReset={() => {
+              queryClient.clear()
+              window.location.href = '/'
+            }}
+          >
+            <BrowserRouter>
+              <ScrollToTop />
+              <App />
+            </BrowserRouter>
+          </ErrorBoundary>
         </ThemeProvider>
       </SnackbarProvider>
       <ReactQueryDevtools initialIsOpen={false} />

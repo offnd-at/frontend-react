@@ -6,6 +6,9 @@ vi.mock('@mui/icons-material', () => ({
   ContentCopy: () => 'ContentCopyIcon',
   Close: () => 'CloseIcon',
   OpenInNew: () => 'OpenInNewIcon',
+  KeyboardArrowDown: () => 'KeyboardArrowDownIcon',
+  KeyboardArrowUp: () => 'KeyboardArrowUpIcon',
+  Refresh: () => 'RefreshIcon',
 }))
 
 document.documentElement.scrollTo = vi.fn()
