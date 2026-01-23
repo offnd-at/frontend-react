@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import { DetailsCard } from './DetailsCard'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
+import { DetailsCard } from './DetailsCard'
 
 dayjs.extend(localizedFormat)
 // However, since they are simple pure functions, we can also just rely on their output if we know it.

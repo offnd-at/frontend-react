@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react'
-import { LinkStats } from './LinkStats'
-import { createTestQueryClient, createWrapper } from '../../test/utils'
-import { server } from '../../test/server'
 import { http, HttpResponse } from 'msw'
+import { LinkStats } from './LinkStats'
+import { server } from '../../test/server'
+import { createTestQueryClient, createWrapper } from '../../test/utils'
 
 const API_URL = import.meta.env.VITE_APP_API_URL || 'http://localhost:5000/api'
 

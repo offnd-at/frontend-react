@@ -3,9 +3,9 @@ import { useState } from 'react'
 
 import { GeneratedLinks } from './GeneratedLinks'
 import { GenerateUrlTextField } from './GenerateUrlTextField'
+import { LinkGeneratorHeader } from './LinkGeneratorHeader'
 import { useGenerateLinkMutation } from '../../hooks/mutations/useGenerateLinkMutation'
 import { useAppliedSettings } from '../../hooks/useAppliedSettings'
-import { LinkGeneratorHeader } from './LinkGeneratorHeader'
 
 interface LinkGeneratorProps {
   sx?: SxProps<Theme>

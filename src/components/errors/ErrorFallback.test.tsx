@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import { ErrorFallback } from './ErrorFallback'
 import { vi } from 'vitest'
+import { ErrorFallback } from './ErrorFallback'
 
 describe('ErrorFallback', () => {
   const mockError = new Error('Test error')

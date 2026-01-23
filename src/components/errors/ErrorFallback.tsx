@@ -1,8 +1,8 @@
+import { Refresh } from '@mui/icons-material'
 import { Box, Button, Container, Paper, Typography, Stack } from '@mui/material'
 import { FallbackProps } from 'react-error-boundary'
-import { HeaderLogo } from '../layout/HeaderLogo'
-import { Refresh } from '@mui/icons-material'
 import { ErrorCallStack } from './ErrorCallStack'
+import { HeaderLogo } from '../layout/HeaderLogo'
 
 export function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   const isDevelopment = import.meta.env.MODE === 'development'

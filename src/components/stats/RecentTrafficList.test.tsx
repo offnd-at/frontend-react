@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import { RecentTrafficList } from './RecentTrafficList'
-import dayjs from 'dayjs'
 
 describe('RecentTrafficList', () => {
   it('renders loading skeleton when loading', () => {

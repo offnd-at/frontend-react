@@ -1,9 +1,9 @@
 import { CalendarToday, Language as LanguageIcon, Style } from '@mui/icons-material'
 import { Card, CardContent, CardHeader, Skeleton, Stack, Typography } from '@mui/material'
 import dayjs from 'dayjs'
-import { humanizeLanguage, humanizeTheme } from '@/utils/humanizers'
 import { Language } from '@/models/language'
 import { Theme } from '@/models/theme'
+import { humanizeLanguage, humanizeTheme } from '@/utils/humanizers'
 
 interface DetailsCardProps {
   loading: boolean

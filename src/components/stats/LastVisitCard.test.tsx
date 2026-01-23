@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import { LastVisitCard } from './LastVisitCard'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import { LastVisitCard } from './LastVisitCard'
 
 dayjs.extend(relativeTime)
 

@@ -1,13 +1,13 @@
 import { Box, Grid, Stack, SxProps, Theme } from '@mui/material'
-import { ApiErrorStack } from '../errors/ApiErrorStack'
-import { TotalVisitsCard } from './TotalVisitsCard'
+import { useGetLinkByPhraseQuery } from '@/hooks/queries/useGetLinkByPhraseQuery'
+import { unexpectedError } from '@/models/apiError'
 import { DetailsCard } from './DetailsCard'
 import { LastVisitCard } from './LastVisitCard'
-import { TargetUrlCard } from './TargetUrlCard'
-import { RecentTrafficList } from './RecentTrafficList'
-import { useGetLinkByPhraseQuery } from '@/hooks/queries/useGetLinkByPhraseQuery'
 import { LinkStatsHeader } from './LinkStatsHeader'
-import { unexpectedError } from '@/models/apiError'
+import { RecentTrafficList } from './RecentTrafficList'
+import { TargetUrlCard } from './TargetUrlCard'
+import { TotalVisitsCard } from './TotalVisitsCard'
+import { ApiErrorStack } from '../errors/ApiErrorStack'
 
 interface LinkStatsProps {
   phrase: string

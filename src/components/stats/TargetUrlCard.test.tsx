@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import { TargetUrlCard } from './TargetUrlCard'
-import { MemoryRouter } from 'react-router-dom'
 import { SnackbarProvider } from 'notistack'
+import { MemoryRouter } from 'react-router-dom'
+import { TargetUrlCard } from './TargetUrlCard'
 
 // Mock clipboard
 const writeTextMock = vi.fn()
@@ -17,7 +17,7 @@ describe('TargetUrlCard', () => {
     vi.clearAllMocks()
   })
 
-  const renderWithProps = (props: any) => {
+  const renderWithProps = (props: { loading: boolean; targetUrl?: string }) => {
     return render(
       <SnackbarProvider>
         <MemoryRouter>
