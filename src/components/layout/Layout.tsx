@@ -13,14 +13,13 @@ export function Layout() {
         <Grid size={{ xs: 12, md: 10, xl: 6 }}>
           <Container
             sx={{
-              py: 2,
+              pb: 4,
             }}
           >
             <Header
               isOnHomepage={pathname === '/'}
               sx={{
-                pt: 4,
-                pb: 4,
+                py: 4,
               }}
             />
             <Outlet />

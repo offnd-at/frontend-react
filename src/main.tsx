@@ -7,6 +7,9 @@ import { SnackbarProvider } from 'notistack'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
 
 import { App } from './App'
 import { ErrorFallback } from './components/errors/ErrorFallback'
@@ -14,6 +17,9 @@ import { ScrollToTop } from './components/ScrollToTop'
 import { queryClient } from './http/queryClient'
 import { appTheme } from './themes/appTheme'
 import { ErrorBoundary } from 'react-error-boundary'
+
+dayjs.extend(relativeTime)
+dayjs.extend(localizedFormat)
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

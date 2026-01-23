@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react'
-import { ErrorStack } from './ErrorStack'
+import { ApiErrorStack } from './ApiErrorStack'
 import { unexpectedError } from '../../models/apiError'
 import type { ApiError } from '../../models/apiError'
 
-describe('ErrorStack', () => {
+describe('ApiErrorStack', () => {
   it('renders unexpected error when errors prop is not provided', () => {
-    render(<ErrorStack />)
+    render(<ApiErrorStack />)
 
     expect(screen.getByText(unexpectedError.message)).toBeInTheDocument()
   })
@@ -16,7 +16,7 @@ describe('ErrorStack', () => {
       { code: 'ERR_2', message: 'Second error' },
     ]
 
-    render(<ErrorStack errors={errors} />)
+    render(<ApiErrorStack errors={errors} />)
 
     expect(screen.getByText('First error')).toBeInTheDocument()
     expect(screen.getByText('Second error')).toBeInTheDocument()
@@ -29,7 +29,7 @@ describe('ErrorStack', () => {
       { code: 'ERR_3', message: 'Third error' },
     ]
 
-    render(<ErrorStack errors={errors} />)
+    render(<ApiErrorStack errors={errors} />)
 
     const alerts = screen.getAllByTestId('error-alert')
     expect(alerts).toHaveLength(3)

@@ -22,7 +22,7 @@ export function LanguageSelector({ sx }: LanguageSelectorProps) {
   return (
     <Box sx={sx}>
       {isLoading ? (
-        <Skeleton variant='rectangular' height={41} />
+        <Skeleton variant='rectangular' height={40} />
       ) : (
         <TextField
           data-testid='language-select'

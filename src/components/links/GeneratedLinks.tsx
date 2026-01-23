@@ -4,7 +4,7 @@ import { Box, Paper, Stack, SxProps } from '@mui/material'
 import { LinkDisplay } from './LinkDisplay'
 import { ApiError } from '../../models/apiError'
 import { GenerateLinkResponse } from '../../models/responses/generateLinkResponse'
-import { ErrorStack } from '../errors/ErrorStack'
+import { ApiErrorStack } from '../errors/ApiErrorStack'
 
 interface GeneratedLinksProps {
   response?: GenerateLinkResponse
@@ -15,7 +15,7 @@ interface GeneratedLinksProps {
 export function GeneratedLinks({ response, errors, sx }: GeneratedLinksProps) {
   return (
     <Box sx={sx}>
-      {Boolean(response) && (
+      {response && (
         <Paper
           data-testid='generated-links-container'
           sx={{
@@ -29,9 +29,8 @@ export function GeneratedLinks({ response, errors, sx }: GeneratedLinksProps) {
           </Stack>
         </Paper>
       )}
-      {Boolean(errors?.length) && (
-        <ErrorStack data-testid='generated-links-errors' errors={errors} />
-      )}
+
+      {errors?.length && <ApiErrorStack data-testid='generated-links-errors' errors={errors} />}
     </Box>
   )
 }

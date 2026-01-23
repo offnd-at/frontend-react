@@ -20,7 +20,7 @@ export function ThemeSelector({ sx }: ThemeSelectorProps) {
   return (
     <Box sx={sx}>
       {isLoading ? (
-        <Skeleton variant='rectangular' height={41} />
+        <Skeleton variant='rectangular' height={40} />
       ) : (
         <TextField
           data-testid='theme-select'

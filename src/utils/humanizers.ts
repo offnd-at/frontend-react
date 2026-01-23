@@ -11,7 +11,7 @@ export function humanizeTheme(theme: Theme) {
     case 2:
       return 'Politicians'
     default:
-      return undefined
+      return 'Unknown theme'
   }
 }
 
@@ -22,7 +22,7 @@ export function humanizeLanguage(language: Language) {
     case 1:
       return 'Polish'
     default:
-      return undefined
+      return 'Unknown language'
   }
 }
 
@@ -33,6 +33,6 @@ export function humanizeFormat(format: Format) {
     case 1:
       return 'PascalCase'
     default:
-      return undefined
+      return 'Unknown format'
   }
 }

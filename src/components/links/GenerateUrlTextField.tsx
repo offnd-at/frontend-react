@@ -1,9 +1,9 @@
 import { Theme } from '@emotion/react'
 import { Close } from '@mui/icons-material'
 import { LoadingButton } from '@mui/lab'
-import { Box, IconButton, InputAdornment, SxProps, TextField } from '@mui/material'
+import { IconButton, InputAdornment, Stack, SxProps, TextField } from '@mui/material'
 
-interface UrlTextFieldProps {
+interface GenerateUrlTextFieldProps {
   url: string
   setUrl: (url: string) => void
   onSubmit?: () => void
@@ -11,14 +11,15 @@ interface UrlTextFieldProps {
   sx?: SxProps<Theme>
 }
 
-export function UrlTextField({ url, setUrl, loading, onSubmit, sx }: UrlTextFieldProps) {
+export function GenerateUrlTextField({
+  url,
+  setUrl,
+  loading,
+  onSubmit,
+  sx,
+}: GenerateUrlTextFieldProps) {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        ...sx,
-      }}
-    >
+    <Stack direction='row' sx={sx} spacing={0}>
       <TextField
         fullWidth
         value={url}
@@ -28,6 +29,10 @@ export function UrlTextField({ url, setUrl, loading, onSubmit, sx }: UrlTextFiel
           input: {
             sx: {
               borderRadius: 0,
+              '& input:-webkit-autofill': {
+                WebkitBoxShadow: (theme) => `0 0 0 1000px ${theme.palette.background.paper} inset`,
+                WebkitTextFillColor: (theme) => theme.palette.text.primary,
+              },
             },
             endAdornment: url.length > 0 && (
               <InputAdornment position='end'>
@@ -44,6 +49,7 @@ export function UrlTextField({ url, setUrl, loading, onSubmit, sx }: UrlTextFiel
           },
         }}
       />
+
       <LoadingButton
         color='primary'
         size='large'
@@ -66,6 +72,6 @@ export function UrlTextField({ url, setUrl, loading, onSubmit, sx }: UrlTextFiel
       >
         Generate
       </LoadingButton>
-    </Box>
+    </Stack>
   )
 }

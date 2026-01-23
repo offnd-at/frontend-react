@@ -1,20 +1,20 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { GenerateUrlCard } from './GenerateUrlCard'
+import { LinkGenerator } from './LinkGenerator'
 import { createTestQueryClient, createWrapper } from '../../test/utils'
 
-describe('GenerateUrlCard', () => {
+describe('LinkGenerator', () => {
   const queryClient = createTestQueryClient()
   const wrapper = createWrapper(queryClient)
 
   it('renders correctly', () => {
-    render(<GenerateUrlCard />, { wrapper })
+    render(<LinkGenerator />, { wrapper })
     expect(screen.getByText('Generate a link')).toBeInTheDocument()
     expect(screen.getByRole('textbox')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /generate/i })).toBeInTheDocument()
   })
 
   it('allows generating a link', async () => {
-    render(<GenerateUrlCard />, { wrapper })
+    render(<LinkGenerator />, { wrapper })
 
     const input = screen.getByRole('textbox')
     const button = screen.getByRole('button', { name: /generate/i })
@@ -35,7 +35,7 @@ describe('GenerateUrlCard', () => {
     // Instead, let's just verify properties are passed down correctly.
     // Since GeneratedLinks is already tested, verifying it renders on success is usually enough integration.
     // But let's check the title is always there.
-    render(<GenerateUrlCard />, { wrapper })
+    render(<LinkGenerator />, { wrapper })
     expect(screen.getByText('Generate a link')).toBeInTheDocument()
   })
 })
