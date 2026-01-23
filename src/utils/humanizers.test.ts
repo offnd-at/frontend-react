@@ -17,8 +17,8 @@ describe('humanizers', () => {
       expect(humanizeTheme({ value: 2 } as Theme)).toBe('Politicians')
     })
 
-    it('returns undefined for unknown theme value', () => {
-      expect(humanizeTheme({ value: 99 } as Theme)).toBeUndefined()
+    it('returns "Unknown theme" for unknown theme value', () => {
+      expect(humanizeTheme({ value: 99 } as Theme)).toBe('Unknown theme')
     })
   })
 
@@ -31,8 +31,8 @@ describe('humanizers', () => {
       expect(humanizeLanguage({ value: 1 } as Language)).toBe('Polish')
     })
 
-    it('returns undefined for unknown language value', () => {
-      expect(humanizeLanguage({ value: 99 } as Language)).toBeUndefined()
+    it('returns "Unknown language" for unknown language value', () => {
+      expect(humanizeLanguage({ value: 99 } as Language)).toBe('Unknown language')
     })
   })
 
@@ -45,8 +45,8 @@ describe('humanizers', () => {
       expect(humanizeFormat({ value: 1 } as Format)).toBe('PascalCase')
     })
 
-    it('returns undefined for unknown format value', () => {
-      expect(humanizeFormat({ value: 99 } as Format)).toBeUndefined()
+    it('returns "Unknown format" for unknown format value', () => {
+      expect(humanizeFormat({ value: 99 } as Format)).toBe('Unknown format')
     })
   })
 })

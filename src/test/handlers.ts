@@ -44,6 +44,8 @@ export const handlers = [
       id: '1',
       phrase: phrase as string,
       targetUrl: 'https://example.com',
+      languageId: 1,
+      themeId: 0,
       visits: 10,
       recentVisits: [],
       createdAt: new Date().toISOString(),

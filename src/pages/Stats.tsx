@@ -1,15 +1,15 @@
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { LinkStats } from '../components/stats/LinkStats'
 
 export function Stats() {
-  const { pathname } = useLocation()
-  const phrase = decodeURIComponent(pathname.substring(3))
+  const { phrase } = useParams<{ phrase: string }>()
+  const decodedPhrase = decodeURIComponent(phrase ?? '')
 
   useEffect(() => {
-    document.title = `offnd.at - /${phrase}`
-  }, [phrase])
+    document.title = `offnd.at - /${decodedPhrase}`
+  }, [decodedPhrase])
 
-  return <LinkStats phrase={phrase} />
+  return <LinkStats phrase={decodedPhrase} />
 }
