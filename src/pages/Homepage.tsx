@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 
-import { GenerateUrlCard } from '../components/links/GenerateUrlCard'
+import { LinkGenerator } from '../components/links/LinkGenerator'
 
 export function Homepage() {
   useEffect(() => {
     document.title = `offnd.at - share the offensiveness`
   }, [])
 
-  return <GenerateUrlCard />
+  return <LinkGenerator />
 }

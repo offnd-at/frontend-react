@@ -22,16 +22,19 @@ export function LanguageSelector({ sx }: LanguageSelectorProps) {
   return (
     <Box sx={sx}>
       {isLoading ? (
-        <Skeleton variant='rectangular' height={41} />
+        <Skeleton variant='rectangular' height={40} />
       ) : (
         <TextField
+          data-testid='language-select'
           fullWidth
           select
           label='Language'
           size='small'
-          InputProps={{
-            sx: {
-              borderRadius: 0,
+          slotProps={{
+            input: {
+              sx: {
+                borderRadius: 0,
+              },
             },
           }}
           value={value}
@@ -41,7 +44,7 @@ export function LanguageSelector({ sx }: LanguageSelectorProps) {
             <MenuItem key={language.value} value={language.value}>
               <Box display='flex' alignItems='center'>
                 <ReactCountryFlag countryCode={mapLanguageToCountryCode(language)} svg />
-                <Typography component='span' sx={{ ml: 1 }}>
+                <Typography variant='body2' component='span' sx={{ ml: 1 }}>
                   {humanizeLanguage(language)}
                 </Typography>
               </Box>

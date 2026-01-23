@@ -16,7 +16,13 @@ export function Footer({ sx }: FooterProps) {
       }}
     >
       <Container maxWidth='lg'>
-        <Typography component='div' flexGrow={1} variant='caption' textAlign='right'>
+        <Typography
+          data-testid='footer-text'
+          component='div'
+          flexGrow={1}
+          variant='caption'
+          textAlign='right'
+        >
           offnd.at - share the offensiveness
         </Typography>
       </Container>

@@ -20,16 +20,19 @@ export function FormatSelector({ sx }: FormatSelectorProps) {
   return (
     <Box sx={sx}>
       {isLoading ? (
-        <Skeleton variant='rectangular' height={41} />
+        <Skeleton variant='rectangular' height={40} />
       ) : (
         <TextField
+          data-testid='format-select'
           fullWidth
           select
           label='Format'
           size='small'
-          InputProps={{
-            sx: {
-              borderRadius: 0,
+          slotProps={{
+            input: {
+              sx: {
+                borderRadius: 0,
+              },
             },
           }}
           value={value}
@@ -38,7 +41,7 @@ export function FormatSelector({ sx }: FormatSelectorProps) {
           {data?.data.formats.map((format) => (
             <MenuItem key={format.value} value={format.value}>
               <Box display='flex' alignItems='center'>
-                <Typography component='span' sx={{ ml: 1 }}>
+                <Typography variant='body2' component='span' sx={{ ml: 1 }}>
                   {humanizeFormat(format)}
                 </Typography>
               </Box>

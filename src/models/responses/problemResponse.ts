@@ -1,10 +1,10 @@
 import { ApiError } from '../apiError'
 
 export type ProblemResponse = {
-  type: string
+  type?: string
   title: string
   status: number
-  detail: string
+  detail?: string
   instance: string
   errors: ApiError[]
   traceId: string

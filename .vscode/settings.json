@@ -1,5 +1,5 @@
 {
-  "editor.defaultFormatter": "vscode.typescript-language-features",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": false,
   "editor.quickSuggestions": {
@@ -8,12 +8,6 @@
   "editor.gotoLocation.multipleDeclarations": "goto",
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.gotoLocation.multipleImplementations": "goto",
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   }

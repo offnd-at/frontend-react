@@ -16,11 +16,13 @@ export function Header({ isOnHomepage, sx }: HeaderProps) {
       <Grid size={{ xs: isOnHomepage ? 8 : 12 }}>
         <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
           <HeaderLogo />
+
           <HeaderText />
         </Link>
       </Grid>
+
       {isOnHomepage && (
-        <Grid size={{ xs: 4 }}>
+        <Grid data-testid='header-settings' size={{ xs: 4 }}>
           <SettingsSelectors />
         </Grid>
       )}

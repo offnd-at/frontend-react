@@ -1,74 +1,63 @@
-import { OpenInNew } from '@mui/icons-material'
-import { Stack, Skeleton, Typography, Box, SxProps, Theme } from '@mui/material'
-import { Link } from 'react-router-dom'
-import { GetLinkResponse } from '@/models/responses/getLinkResponse'
-import { ApiError } from '../../models/apiError'
-import { ErrorStack } from '../errors/ErrorStack'
+import { Box, Grid, Stack, SxProps, Theme } from '@mui/material'
+import { useGetLinkByPhraseQuery } from '@/hooks/queries/useGetLinkByPhraseQuery'
+import { unexpectedError } from '@/models/apiError'
+import { DetailsCard } from './DetailsCard'
+import { LastVisitCard } from './LastVisitCard'
+import { LinkStatsHeader } from './LinkStatsHeader'
+import { RecentTrafficList } from './RecentTrafficList'
+import { TargetUrlCard } from './TargetUrlCard'
+import { TotalVisitsCard } from './TotalVisitsCard'
+import { ApiErrorStack } from '../errors/ApiErrorStack'
 
 interface LinkStatsProps {
-  loading: boolean
-  linkResponse?: GetLinkResponse
-  errors?: ApiError[]
+  phrase: string
   sx?: SxProps<Theme>
 }
 
-export function LinkStats({ loading, linkResponse, errors, sx }: LinkStatsProps) {
+export function LinkStats({ phrase, sx }: LinkStatsProps) {
+  const { data, error, isFetching } = useGetLinkByPhraseQuery(phrase)
+
+  const errors = error?.response?.data?.errors
+  const linkResponse = data?.data
+
+  if (!isFetching && !linkResponse) {
+    return (
+      <Box sx={sx}>
+        <ApiErrorStack errors={errors ?? [unexpectedError]} />
+      </Box>
+    )
+  }
+
   return (
-    <Box sx={sx}>
-      {loading ? (
-        <Stack spacing={2}>
-          <Skeleton variant='rectangular' height={24} />
-          <Skeleton variant='rectangular' height={24} />
-        </Stack>
-      ) : linkResponse ? (
-        <Stack spacing={2}>
-          <Box
-            display='flex'
-            alignItems='center'
-            sx={{
-              flexWrap: 'wrap',
-              wordBreak: 'break-all',
-            }}
-          >
-            <Stack direction='row' spacing={1} alignItems='center'>
-              <Typography variant='body1'>Target URL:</Typography>
-              <Link
-                target='_blank'
-                to={linkResponse?.targetUrl ?? ''}
-                style={{
-                  alignItems: 'center',
-                  display: 'flex',
-                  textDecoration: 'none',
-                  color: 'inherit',
-                }}
-                rel='noreferrer'
-              >
-                <Stack direction='row' spacing={0.5} alignItems='center'>
-                  <Typography variant='body1'>{linkResponse?.targetUrl}</Typography>
-                  <Box display='flex'>
-                    <OpenInNew fontSize='small' />
-                  </Box>
-                </Stack>
-              </Link>
-            </Stack>
-          </Box>
-          <Box
-            display='flex'
-            alignItems='center'
-            sx={{
-              flexWrap: 'wrap',
-              wordBreak: 'break-all',
-            }}
-          >
-            <Stack direction='row' spacing={1} alignItems='center'>
-              <Typography variant='body1'>Visits:</Typography>
-              <Typography variant='body1'>{linkResponse?.visits}</Typography>
-            </Stack>
-          </Box>
-        </Stack>
-      ) : (
-        <ErrorStack errors={errors} />
-      )}
-    </Box>
+    <Stack sx={sx} spacing={4}>
+      <LinkStatsHeader phrase={phrase} />
+
+      <Grid container spacing={3}>
+        <Grid size={{ xs: 12, md: 4 }}>
+          <TotalVisitsCard loading={isFetching} visits={linkResponse?.visits} />
+        </Grid>
+
+        <Grid size={{ xs: 12, md: 4 }}>
+          <DetailsCard
+            loading={isFetching}
+            languageId={linkResponse?.languageId}
+            themeId={linkResponse?.themeId}
+            createdAt={linkResponse?.createdAt}
+          />
+        </Grid>
+
+        <Grid size={{ xs: 12, md: 4 }}>
+          <LastVisitCard loading={isFetching} lastVisit={linkResponse?.recentVisits?.[0]} />
+        </Grid>
+
+        <Grid size={{ xs: 12 }}>
+          <TargetUrlCard loading={isFetching} targetUrl={linkResponse?.targetUrl} />
+        </Grid>
+
+        <Grid size={{ xs: 12 }}>
+          <RecentTrafficList loading={isFetching} recentVisits={linkResponse?.recentVisits ?? []} />
+        </Grid>
+      </Grid>
+    </Stack>
   )
 }

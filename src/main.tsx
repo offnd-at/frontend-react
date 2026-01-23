@@ -3,15 +3,23 @@ import { ThemeProvider } from '@emotion/react'
 import { CssBaseline } from '@mui/material'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import dayjs from 'dayjs'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import { SnackbarProvider } from 'notistack'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ErrorBoundary } from 'react-error-boundary'
 import { BrowserRouter } from 'react-router-dom'
 
 import { App } from './App'
+import { ErrorFallback } from './components/errors/ErrorFallback'
 import { ScrollToTop } from './components/ScrollToTop'
 import { queryClient } from './http/queryClient'
 import { appTheme } from './themes/appTheme'
+
+dayjs.extend(relativeTime)
+dayjs.extend(localizedFormat)
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -19,10 +27,18 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <SnackbarProvider>
         <ThemeProvider theme={appTheme}>
           <CssBaseline />
-          <BrowserRouter>
-            <ScrollToTop />
-            <App />
-          </BrowserRouter>
+          <ErrorBoundary
+            FallbackComponent={ErrorFallback}
+            onReset={() => {
+              queryClient.clear()
+              window.location.href = '/'
+            }}
+          >
+            <BrowserRouter>
+              <ScrollToTop />
+              <App />
+            </BrowserRouter>
+          </ErrorBoundary>
         </ThemeProvider>
       </SnackbarProvider>
       <ReactQueryDevtools initialIsOpen={false} />

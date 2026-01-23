@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { ErrorStack } from '../components/errors/ErrorStack'
+import { ApiErrorStack } from '../components/errors/ApiErrorStack'
 import { redirectNotFound } from '../models/apiError'
 
 export function NotFound() {
@@ -11,5 +11,5 @@ export function NotFound() {
     document.title = `offnd.at - ${pathname}`
   }, [pathname])
 
-  return <ErrorStack errors={[redirectNotFound(decodeURIComponent(pathname))]} />
+  return <ApiErrorStack errors={[redirectNotFound(decodeURIComponent(pathname))]} />
 }

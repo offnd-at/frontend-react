@@ -20,16 +20,19 @@ export function ThemeSelector({ sx }: ThemeSelectorProps) {
   return (
     <Box sx={sx}>
       {isLoading ? (
-        <Skeleton variant='rectangular' height={41} />
+        <Skeleton variant='rectangular' height={40} />
       ) : (
         <TextField
+          data-testid='theme-select'
           fullWidth
           select
           label='Theme'
           size='small'
-          InputProps={{
-            sx: {
-              borderRadius: 0,
+          slotProps={{
+            input: {
+              sx: {
+                borderRadius: 0,
+              },
             },
           }}
           value={value}
@@ -38,7 +41,7 @@ export function ThemeSelector({ sx }: ThemeSelectorProps) {
           {data?.data.themes.map((theme) => (
             <MenuItem key={theme.value} value={theme.value}>
               <Box display='flex' alignItems='center'>
-                <Typography component='span' sx={{ ml: 1 }}>
+                <Typography variant='body2' component='span' sx={{ ml: 1 }}>
                   {humanizeTheme(theme)}
                 </Typography>
               </Box>
