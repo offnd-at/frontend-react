@@ -27,6 +27,7 @@ export function FormatSelector({ sx }: FormatSelectorProps) {
           fullWidth
           select
           label='Format'
+          aria-label='Select format'
           size='small'
           slotProps={{
             input: {

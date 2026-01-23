@@ -35,6 +35,7 @@ export function LinkDisplay({ title, url, sx }: LinkDisplayProps) {
 
         <IconButton
           data-testid='copy-button'
+          aria-label='Copy link'
           onClick={() => {
             enqueueSnackbar('Copied to clipboard', {
               autoHideDuration: 2000,
