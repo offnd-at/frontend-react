@@ -56,6 +56,7 @@ export function TargetUrlCard({ loading, targetUrl }: TargetUrlCardProps) {
       </Box>
 
       <IconButton
+        aria-label='Copy target URL'
         onClick={() => {
           if (targetUrl) {
             enqueueSnackbar('Copied to clipboard', {

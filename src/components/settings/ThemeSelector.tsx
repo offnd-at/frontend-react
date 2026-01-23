@@ -27,6 +27,7 @@ export function ThemeSelector({ sx }: ThemeSelectorProps) {
           fullWidth
           select
           label='Theme'
+          aria-label='Select theme'
           size='small'
           slotProps={{
             input: {

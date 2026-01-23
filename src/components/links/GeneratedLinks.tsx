@@ -14,7 +14,7 @@ interface GeneratedLinksProps {
 
 export function GeneratedLinks({ response, errors, sx }: GeneratedLinksProps) {
   return (
-    <Box sx={sx}>
+    <Box sx={sx} aria-live='polite'>
       {response && (
         <Paper
           data-testid='generated-links-container'

@@ -7,8 +7,16 @@ import reactPlugin from 'eslint-plugin-react'
 import importPlugin from 'eslint-plugin-import'
 import prettierPlugin from 'eslint-plugin-prettier'
 import eslintConfigPrettier from 'eslint-config-prettier'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
 
 export default [
+  {
+    settings: {
+      react: {
+        version: '19.2.3',
+      },
+    },
+  },
   { ignores: ['dist'] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
@@ -16,8 +24,10 @@ export default [
   reactPlugin.configs.flat['jsx-runtime'],
   {
     files: ['**/*.{ts,tsx}'],
+    ...jsxA11y.flatConfigs.recommended,
     languageOptions: {
       ecmaVersion: 2020,
+      ...jsxA11y.flatConfigs.recommended.languageOptions,
       globals: globals.browser,
       parserOptions: {
         ecmaFeatures: {
@@ -28,13 +38,11 @@ export default [
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      react: reactPlugin,
       import: importPlugin,
       prettier: prettierPlugin,
     },
     settings: {
-      react: {
-        version: 'detect',
-      },
       'import/resolver': {
         typescript: {
           alwaysTryTypes: true,
@@ -44,6 +52,8 @@ export default [
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      ...reactPlugin.configs.flat.recommended.rules,
+      ...reactPlugin.configs.flat['jsx-runtime'].rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'import/order': [
         'error',

@@ -29,6 +29,7 @@ export function LanguageSelector({ sx }: LanguageSelectorProps) {
           fullWidth
           select
           label='Language'
+          aria-label='Select language'
           size='small'
           slotProps={{
             input: {

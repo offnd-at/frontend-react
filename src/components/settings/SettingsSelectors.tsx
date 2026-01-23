@@ -10,7 +10,7 @@ interface SettingsSelectorsProps {
 
 export function SettingsSelectors({ sx }: SettingsSelectorsProps) {
   return (
-    <Stack spacing={2} sx={sx}>
+    <Stack spacing={2} sx={sx} role='group' aria-label='Link settings'>
       <LanguageSelector />
       <FormatSelector />
       <ThemeSelector />
