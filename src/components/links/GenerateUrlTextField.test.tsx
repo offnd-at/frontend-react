@@ -36,6 +36,7 @@ describe('GenerateUrlTextField', () => {
     fireEvent.click(clearButton)
     expect(setUrl).toHaveBeenCalledWith('')
   })
+
   it('is disabled when loading prop is true', () => {
     render(<GenerateUrlTextField {...defaultProps} loading={true} />)
     const button = screen.getByRole('button', { name: /generate/i })
