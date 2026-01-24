@@ -32,11 +32,9 @@ describe('RecentTrafficList', () => {
 
     expect(screen.getByText('Recent traffic')).toBeInTheDocument()
 
-    // Check first item
     expect(screen.getByText('192.168.1.1')).toBeInTheDocument()
     expect(screen.getByText('Referrer: Google')).toBeInTheDocument()
 
-    // Check second item
     expect(screen.getByText('10.0.0.1')).toBeInTheDocument()
     expect(screen.getByText('Referrer: Direct')).toBeInTheDocument()
   })

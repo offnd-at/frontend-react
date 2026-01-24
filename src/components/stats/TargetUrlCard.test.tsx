@@ -40,7 +40,6 @@ describe('TargetUrlCard', () => {
     expect(screen.getByText('Target URL')).toBeInTheDocument()
     expect(screen.getByText(url)).toBeInTheDocument()
 
-    // Check if link is correct
     const link = screen.getByRole('link')
     expect(link).toHaveAttribute('href', url)
     expect(link).toHaveAttribute('target', '_blank')

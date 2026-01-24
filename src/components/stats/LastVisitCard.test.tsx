@@ -22,9 +22,6 @@ describe('LastVisitCard', () => {
     const now = dayjs()
     const visitedAt = now.subtract(5, 'minute').toDate()
 
-    // Mock the date displayed to be consistent or just use basic matcher?
-    // "5 minutes ago"
-
     render(
       <LastVisitCard
         loading={false}
@@ -32,7 +29,7 @@ describe('LastVisitCard', () => {
       />,
     )
 
-    expect(screen.getByText(/5 minutes ago/i)).toBeInTheDocument() // Approximate
+    expect(screen.getByText(/5 minutes ago/i)).toBeInTheDocument()
     expect(screen.getByText(new RegExp(dayjs(visitedAt).format('lll'), 'i'))).toBeInTheDocument()
   })
 })
