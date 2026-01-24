@@ -29,13 +29,4 @@ describe('LinkGenerator', () => {
     expect(screen.getByText('http://offnd.at/test-phrase')).toBeInTheDocument()
     expect(screen.getByText('http://offnd.at/stats/test-phrase')).toBeInTheDocument()
   })
-
-  it('shows error when generation fails (sanity check)', async () => {
-    // We can simulate an error by making the mutation fail, but the handler is fixed.
-    // Instead, let's just verify properties are passed down correctly.
-    // Since GeneratedLinks is already tested, verifying it renders on success is usually enough integration.
-    // But let's check the title is always there.
-    render(<LinkGenerator />, { wrapper })
-    expect(screen.getByText('Generate a link')).toBeInTheDocument()
-  })
 })

@@ -14,7 +14,7 @@ describe('LinkStats', () => {
   }
 
   it('renders loading state initially', () => {
-    // We can delay the response to ensure we see loading state
+    // We delay the response to ensure we see loading state
     server.use(
       http.get(`${API_URL}/links/test-phrase`, async () => {
         await new Promise((resolve) => setTimeout(resolve, 100))

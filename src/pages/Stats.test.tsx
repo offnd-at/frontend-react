@@ -67,4 +67,21 @@ describe('Stats page', () => {
       expect(screen.getByText('/test phrase')).toBeInTheDocument()
     })
   })
+
+  it('handles empty phrase', async () => {
+    const wrapper = createWrapper(queryClient, ['/s/'])
+
+    render(
+      <SnackbarProvider>
+        <Routes>
+          <Route path='/s/:phrase?' element={<Stats />} />
+        </Routes>
+      </SnackbarProvider>,
+      { wrapper },
+    )
+
+    await waitFor(() => {
+      expect(screen.getByText('/')).toBeInTheDocument()
+    })
+  })
 })
