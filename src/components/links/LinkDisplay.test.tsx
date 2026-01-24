@@ -10,7 +10,7 @@ describe('LinkDisplay', () => {
     url: 'https://offnd.at/test',
   }
 
-  const renderWithProviders = (props = defaultProps) => {
+  const renderWithProviders = (props: { title?: string; url?: string } = defaultProps) => {
     const wrapper = createWrapper(queryClient)
     return render(
       <SnackbarProvider>
@@ -46,6 +46,27 @@ describe('LinkDisplay', () => {
     fireEvent.click(copyButton)
 
     expect(writeTextMock).toHaveBeenCalledWith('https://offnd.at/test')
+    expect(await screen.findByText('Copied to clipboard')).toBeInTheDocument()
+  })
+
+  it('handles missing url', async () => {
+    const writeTextMock = vi.fn().mockResolvedValue(undefined)
+    Object.assign(navigator, {
+      clipboard: {
+        writeText: writeTextMock,
+      },
+    })
+
+    renderWithProviders({ title: 'No URL Link', url: undefined })
+
+    expect(screen.getByText('No URL Link')).toBeInTheDocument()
+    const link = screen.getByRole('link')
+    expect(link).toHaveAttribute('href', '/')
+
+    const copyButton = screen.getByTestId('copy-button')
+    fireEvent.click(copyButton)
+
+    expect(writeTextMock).toHaveBeenCalledWith('')
     expect(await screen.findByText('Copied to clipboard')).toBeInTheDocument()
   })
 })

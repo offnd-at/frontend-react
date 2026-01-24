@@ -36,10 +36,40 @@ describe('GenerateUrlTextField', () => {
     fireEvent.click(clearButton)
     expect(setUrl).toHaveBeenCalledWith('')
   })
-
   it('is disabled when loading prop is true', () => {
     render(<GenerateUrlTextField {...defaultProps} loading={true} />)
     const button = screen.getByRole('button', { name: /generate/i })
     expect(button).toBeDisabled()
+  })
+
+  it('does not show clear button when url is empty', () => {
+    render(<GenerateUrlTextField {...defaultProps} url='' />)
+    expect(screen.queryByTestId('clear-button')).not.toBeInTheDocument()
+  })
+
+  it('focuses input on mount', () => {
+    render(<GenerateUrlTextField {...defaultProps} />)
+    const input = screen.getByRole('textbox')
+    expect(input).toHaveFocus()
+  })
+
+  it('focuses input when Ctrl + / is pressed', () => {
+    render(<GenerateUrlTextField {...defaultProps} />)
+    const input = screen.getByRole('textbox')
+    input.blur()
+    expect(input).not.toHaveFocus()
+
+    fireEvent.keyDown(window, { key: '/', ctrlKey: true })
+    expect(input).toHaveFocus()
+  })
+
+  it('focuses input when Meta + / is pressed', () => {
+    render(<GenerateUrlTextField {...defaultProps} />)
+    const input = screen.getByRole('textbox')
+    input.blur()
+    expect(input).not.toHaveFocus()
+
+    fireEvent.keyDown(window, { key: '/', metaKey: true })
+    expect(input).toHaveFocus()
   })
 })
