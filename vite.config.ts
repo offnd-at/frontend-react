@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => {
       include: ['src/**/*.{test,spec}.{ts,tsx}'],
       coverage: {
         provider: 'v8',
-        reporter: ['text', 'json', 'html'],
+        reporter: ['text', 'json', 'html', 'json-summary', 'lcov'],
         exclude: [
           'node_modules/',
           'src/test/',
