@@ -106,7 +106,7 @@ jobs:
           password: ${{ github.token }}
 
       - name: Build and push the image to the registry
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           push: true
           context: '{{defaultContext}}'
